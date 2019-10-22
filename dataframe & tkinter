@@ -1,0 +1,33 @@
+import pandas as pd
+import tkinter as tk
+data = pd.read_csv(r'C:\Users\andyk\Downloads\test.csv')
+
+window = tk.Tk('Test Fixture')
+def search_df(*event):
+    search_result=data.loc[data['TESTER'].str.contains(e1_value.get(),
+                               na=False, #ignore the cell's value is Nan
+                               case=False)] #case insensitive
+    t1.insert(tk.END,search_result)
+
+
+#Creates the entry box and link the e1_value to the variable
+e1_value=tk.StringVar()
+e1=tk.Entry(window, textvariable=e1_value)
+e1.grid(row=0,column=0)
+#execute the search_df function when you hit the "enter" key and put an event
+#parameter
+e1.bind("<Return>", search_df) 
+
+#Creates a button
+b1=tk.Button(window,
+             width=10,
+             text='Search Tester',
+             command=search_df)
+
+b1.grid(row=0,column=1)
+
+#Creates a text box
+t1=tk.Text(window,height=55,width=80)
+t1.grid(row=0,column=2)
+
+window.mainloop() #end of the main window
