@@ -13,9 +13,7 @@ listbox = tk.Listbox(window)
 window.geometry("720x720")
 frame = tk.Frame(window)
 frame.pack()
-# for a_file in a:
-#     listbox.insert(tk.END, a_file)
-# listbox.pack(fill=tk.BOTH, expand=tk.YES)
+
 def dbclick(*event):
     item = listbox.get('active')  #get clicked item
     dbclick_cmds[item]()
@@ -38,8 +36,6 @@ e1.bind("<Return>", search_df)
 b1=tk.Button(window,width=10,text='File Search',command=search_df)
 b1.pack(side = tk.LEFT)
 #Creates a text box
-#t1=tk.Text(window,height=55,width=200)
-#t1.grid(row=0,column=2)
 
 def internet(self):
     weblink = listbox.get(ACTIVE)
@@ -47,4 +43,3 @@ def internet(self):
 listbox.bind( "<Double-Button-1>" , internet )
 
 window.mainloop() #end of the main window
-# placing the button on my window
