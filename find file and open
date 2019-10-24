@@ -37,6 +37,7 @@ b1=tk.Button(window,width=10,text='File Search',command=search_df)
 b1.pack(side = tk.LEFT)
 #Creates a text box
 
+#Double click file in LISTBOX to open File
 def internet(self):
     weblink = listbox.get(ACTIVE)
     webbrowser.open(weblink)
