@@ -1,0 +1,50 @@
+import glob
+import pandas as pd
+import tkinter as tk
+import sys
+import webbrowser
+pd.set_option('display.max_colwidth', -1)
+dirList = glob.glob(r'C:\Users\andyk\Downloads\Andy\**',recursive=True)
+a=['DIRECTORY']
+for d in dirList:
+ a.append(d)
+window=tk.Tk()
+listbox = tk.Listbox(window)
+window.geometry("720x720")
+frame = tk.Frame(window)
+frame.pack()
+# for a_file in a:
+#     listbox.insert(tk.END, a_file)
+# listbox.pack(fill=tk.BOTH, expand=tk.YES)
+def dbclick(*event):
+    item = listbox.get('active')  #get clicked item
+    dbclick_cmds[item]()
+    
+def search_df(*event):
+    search_result= [s for s in (a) if e1_value.get() in s]
+    for a_file in search_result:
+        listbox.insert(tk.END, a_file)
+        listbox.pack(fill=tk.BOTH, expand=tk.YES)     
+
+
+#Creates the entry box and link the e1_value to the variable
+e1_value=tk.StringVar()
+e1=tk.Entry(window, textvariable=e1_value)
+e1.pack(side = tk.LEFT)
+#execute the search_df function when you hit the "enter" key and put an event
+#parameter
+e1.bind("<Return>", search_df) 
+#Creates a button
+b1=tk.Button(window,width=10,text='File Search',command=search_df)
+b1.pack(side = tk.LEFT)
+#Creates a text box
+#t1=tk.Text(window,height=55,width=200)
+#t1.grid(row=0,column=2)
+
+def internet(self):
+    weblink = listbox.get(ACTIVE)
+    webbrowser.open(weblink)
+listbox.bind( "<Double-Button-1>" , internet )
+
+window.mainloop() #end of the main window
+# placing the button on my window
